@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import PageHeader from '../template/pageHeader'
 import TodoForm from './todoForm'
 import TodoList from './todoList'
+import Axios from 'axios';
+
+const URL = 'http://localhost:3003/api/todos'
 
 export default class Todo extends Component {
     
@@ -18,6 +21,9 @@ export default class Todo extends Component {
     }
 
     handleAdd() {
+        const description = this.state.description
+        Axios.post(URL, {description})
+            .then(resp => console.log('Funcionou!'))
         console.log(this.state.description)
     }
 
